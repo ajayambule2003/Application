@@ -1,5 +1,8 @@
 package com.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,7 +51,7 @@ public class StudentController {
 
 	@GetMapping("/read")
 	public String showAllStudents(Model model) {
-		List<Student> studList = service.findAllStudets();
+		List<Student> studList = service.findAllStudent();
 		System.out.println(studList);
 		model.addAttribute("studList", studList);
 		return "display";
@@ -71,5 +74,9 @@ public class StudentController {
 		return service;
 	}
 
-	
+	@Autowired
+	public void setService(StudentService service) {
+		this.service = service;
+	}
+
 }
