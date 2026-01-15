@@ -46,4 +46,12 @@ public class StudentController {
 		return "redirect:/students/read";
 	}
 
+	@GetMapping("/read")
+	public String showAllStudents(Model model) {
+		List<Student> studList = service.findAllStudets();
+		System.out.println(studList);
+		model.addAttribute("studList", studList);
+		return "display";
+	}
+
 }
