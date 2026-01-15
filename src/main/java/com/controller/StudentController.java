@@ -54,4 +54,22 @@ public class StudentController {
 		return "display";
 	}
 
+	@GetMapping("/edit/{id}")
+	public String openUpdateForm(@PathVariable("id") int id, Model model) {
+		Student student = service.findStudentById(id);
+		model.addAttribute("stud", student);
+		return "student-update";
+	}
+
+	@GetMapping("/update")
+	public String updateStudent(@ModelAttribute("stud") Student student) {
+		service.modifyStudent(student);
+		return "redirect:/students/read";
+	}
+
+	public StudentService getService() {
+		return service;
+	}
+
+	
 }
