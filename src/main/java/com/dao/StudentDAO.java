@@ -2,6 +2,7 @@ package com.dao;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -10,43 +11,45 @@ import com.model.Student;
 
 @Repository
 public class StudentDAO {
-	private JdbcTemplate jdbctemplate;
 
-	private void insertStudent(Student student) {
-		// TODO Auto-generated method stub
-		String sql = "insert inti student(id,name,marks) values(?,?,?)";
-		jdbctemplate.update(sql, student.getId(), student.getStudent(), student.getMarks());
+	private JdbcTemplate jdbcTemplate;
+
+	public void insertStudent(Student student) {
+		String sql = "INSERT INTO STUDENT (id,name,marks) values(?,?,?)";
+
+		jdbcTemplate.update(sql, student.getId(), student.getName(), student.getMarks());
 	}
 
-	private void removeStudent(int id) {
-		// TODO Auto-generated method stub
-		String sql = "delete from student where id=?";
-		jdbctemplate.update(sql, id);
+	public void removeStudent(int id) {
+		String sql = "DELETE FROM STUDENT WHERE id=?";
+
+		jdbcTemplate.update(sql, id);
 	}
 
-	private void updateStudent(Student student) {
-		// TODO Auto-generated method stub
-		String sql = "update student set name=? , marks=? WHERE id=?";
-		jdbctemplate.update(sql, student.getStudent(), student.getMarks(), student.getId());
+	public void updateStudent(Student student) {
+		String sql = "UPDATE STUDENT set name=? , marks=? WHERE id=?";
+
+		jdbcTemplate.update(sql, student.getName(), student.getMarks(), student.getId());
 	}
 
 	public List<Student> getAllStudets() {
-		String sql = "select * from student";
-		return jdbctemplate.query(sql, new StudentRowMapper());
+		String sql = "SELECT * FROM Student";
+
+		return jdbcTemplate.query(sql, new StudentRowMapper());
 	}
 
 	public Student getStudentById(int id) {
-		// TODO Auto-generated method stub
-		String sql = "select * from student where id=?";
-		return jdbctemplate.queryForObject(sql, new StudentRowMapper(), id);
-
+		String sql = "SELECT * FROM Student WHERE id=?";
+		return jdbcTemplate.queryForObject(sql, new StudentRowMapper(), id);
 	}
 
 	public JdbcTemplate getJdbcTemplate() {
-		return jdbctemplate;
+		return jdbcTemplate;
 	}
 
-	public void setJdbctemplate(JdbcTemplate jdbctemplate) {
-		this.jdbctemplate = jdbctemplate;
+	@Autowired
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
+
 }

@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 public class Student implements Serializable {
 	private int id;
-	private String student;
+	private String name;
 	private double marks;
 
 	public Student() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student(int id, String student, double marks) {
+	public Student(int id, String name, double marks) {
 		super();
 		this.id = id;
-		this.student = student;
+		this.name = name;
 		this.marks = marks;
 	}
 
@@ -26,12 +26,12 @@ public class Student implements Serializable {
 		this.id = id;
 	}
 
-	public String getStudent() {
-		return student;
+	public String getName() {
+		return name;
 	}
 
-	public void setStudent(String student) {
-		this.student = student;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public double getMarks() {
@@ -44,7 +44,7 @@ public class Student implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", student=" + student + ", marks=" + marks + "]";
+		return "Student [id=" + id + ", name=" + name + ", marks=" + marks + "]";
 	}
 
 }

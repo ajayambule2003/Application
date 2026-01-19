@@ -3,6 +3,7 @@ package com.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+// @GetMapping =@RequestMapping(value = "/new", method = RequestMethod.GET)
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.model.Student;
 import com.service.StudentService;
 
-@Controller
 @RequestMapping("/students")
+@Controller
 public class StudentController {
 
 	private StudentService service;
 
-	// http://localhost:8080/Application/students/
-	@GetMapping("/")
+	// http://localhost:8080/StudentApp/students/
+	@GetMapping("/") // @RequestMapping("/") //
 	public String openForm() {
 		return "welcome";
 	}
@@ -51,7 +52,7 @@ public class StudentController {
 
 	@GetMapping("/read")
 	public String showAllStudents(Model model) {
-		List<Student> studList = service.findAllStudent();
+		List<Student> studList = service.findAllStudets();
 		System.out.println(studList);
 		model.addAttribute("studList", studList);
 		return "display";

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -14,8 +15,9 @@
 
 
 	<hr>
-	<!-- <form:form action="${pageContext.request.contextPath }/students/update"	method="get" modelAttribute ="stud">
-		<label> Id</label>
+	<!--<form:form action="${pageContext.request.contextPath }/students/update"
+		method="get" modelAttribute="stud">
+		<label> Id</label>            - ->
 		<form:input path="id" readonly="true" />
 		<br>
 		<label> Name</label>
@@ -24,10 +26,10 @@
 		<label> Marks</label>
 		<form:input path="marks" />
 		<br>
-		<input type="submit" value="UPADTE">
+		<input type="submit" value="UPADTE">  -->
 
 	</form:form>
--->
+
 
 </body>
 </html>

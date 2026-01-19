@@ -5,18 +5,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.model.Student;
 import com.dao.StudentDAO;
+//import com.dao.StudentDao;
+import com.model.Student;
 
 @Service
 public class StudentService {
+
 	private StudentDAO studentDao;
 
-	private void addStudent(Student student) {
+	public void addStudent(Student student) {
 		studentDao.insertStudent(student);
 	}
 
-	private void deleteStudent(int id) {
+	public void deleteStudent(int id) {
 		studentDao.removeStudent(id);
 	}
 
@@ -24,8 +26,12 @@ public class StudentService {
 		studentDao.updateStudent(student);
 	}
 
-	public List<Student> findAllStudent() {
+	public List<Student> findAllStudets() {
 		return studentDao.getAllStudets();
+	}
+
+	public Student findStudentById(int id) {
+		return studentDao.getStudentById(id);
 	}
 
 	public StudentDAO getStudentDao() {
@@ -36,4 +42,5 @@ public class StudentService {
 	public void setStudentDao(StudentDAO studentDao) {
 		this.studentDao = studentDao;
 	}
+
 }
